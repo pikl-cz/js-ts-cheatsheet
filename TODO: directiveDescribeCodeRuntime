@@ -9,7 +9,8 @@
   4. ...
 
 
-// ignorovat TODO:
+// ignore TODO:
+// usefull for testers (scenario), devs (description and writing strategy)
 
 
 import * as ts from "typescript";

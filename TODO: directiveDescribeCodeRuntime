@@ -1,0 +1,48 @@
+// Example output
+  1. Načíst UI elementy
+  2. Sledování počet chybějících znaků & autoheight u formu na založení vlákna
+  3. Po kliknutí na tlačítko 'Odeslat komentář'
+    1. Validovat text
+    2. Schovat UI & přidat loader
+    3. Odeslat data
+    4. Vyčistit formulář
+  4. ...
+
+
+// ignorovat TODO:
+
+
+import * as ts from "typescript";
+import * as fs from "fs";
+
+// Specify the file path of the TypeScript file you want to load comments from
+const filePath = "./myFile.ts";
+
+// Read the TypeScript file as a string
+const fileContent = ts.sys.readFile(filePath);
+
+// Parse the TypeScript file using the TypeScript Compiler API
+const sourceFile = ts.createSourceFile(filePath, fileContent, ts.ScriptTarget.Latest);
+
+// Get all the comments from the TypeScript file
+const comments: { text: string, indent: number }[] = [];
+ts.forEachChild(sourceFile, function visit(node) {
+  if (ts.isSourceFile(node) || ts.isModuleDeclaration(node)) {
+    ts.forEachChild(node, visit);
+  } else {
+    const commentRanges = ts.getLeadingCommentRanges(fileContent, node.getFullStart());
+    if (commentRanges) {
+      const commentText = commentRanges.map(range => fileContent.substring(range.pos, range.end)).join("\n");
+      const indent = commentRanges[0].pos - ts.getLineStartPositionForPosition(sourceFile, commentRanges[0].pos);
+      comments.push({ text: commentText, indent });
+    }
+  }
+});
+
+// Generate the output file in Markdown format
+const outputFilePath = "./myFileComments.md";
+fs.writeFileSync(outputFilePath, "");
+comments.forEach(comment => {
+  const paddedComment = " ".repeat(comment.indent) + comment.text.trim().replace(/\n/g, `\n${" ".repeat(comment.indent)}`);
+  fs.appendFileSync(outputFilePath, `${paddedComment}\n\n`);
+});

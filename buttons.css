@@ -1,0 +1,50 @@
+
+// inspirace https://www.cssscript.com/animated-button-loader/#google_vignette
+
+@keyframes load {
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(-1.75rem);
+  }
+}
+
+// .forum__form-submit--pending {
+//   // background-color: blue;
+//   // animation: color-change 3s infinite;
+//   background: linear-gradient(to right, var(--primary-main), #fff);
+//   background-size: 200% 100%;
+//   background-position: left;
+//   animation: slide-background 3s linear infinite;
+//   width: 220px;
+// }
+
+// @keyframes slide-background {
+//   0% {
+//     background-position: left;
+//   }
+
+//   50% {
+//     background-position: right;
+//   }
+
+//   100% {
+//     background-position: left;
+//   }
+// }
+
+// @keyframes color-change {
+//   0% {
+//     background-color: blue;
+//   }
+
+//   50% {
+//     background-color: purple;
+//   }
+
+//   100% {
+//     background-color: red;
+//   }
+// }

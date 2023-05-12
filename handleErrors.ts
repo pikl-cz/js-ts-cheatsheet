@@ -17,4 +17,17 @@ catch (e){
 }
 
 
+  function throwErr(msg: string): never {
+    throw new Error(msg);
+  }
+
+  try {
+    const elementNew: HTMLButtonElement | null = document.querySelector('.dsadasdas');
+    throw 'TEST';
+    if (!elementNew) throwErr('Something went wrong');
+  } catch (error) {
+    // eslint-disable-next-line no-console
+    console.error('An error occurred:', error);
+  }
+
 // https://tslog.js.org/#/

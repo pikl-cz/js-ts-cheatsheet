@@ -30,4 +30,9 @@ catch (e){
     console.error('An error occurred:', error);
   }
 
+myPromiseFunction()
+.then(response => { dosomething(response) })
+.catch(err => { flashMessage(err) }
+.finaly(() => { this.changSomeState() })
+
 // https://tslog.js.org/#/

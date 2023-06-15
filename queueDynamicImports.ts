@@ -1,3 +1,6 @@
+// Inspirace https://github.com/tc39/proposal-defer-import-eval
+
+
 interface IImport {
   name: string;
   triggers: HTMLElement | NodeListOf<HTMLElement> | [] | null;

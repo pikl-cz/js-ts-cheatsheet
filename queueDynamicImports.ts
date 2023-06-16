@@ -70,3 +70,10 @@ async function loadModules(): Promise<void> {
 }
 
 loadModules();
+
+/*
+import("/path/to/import-module.js") // .js can be skipped
+  .then((module) => {
+    // do something with the module
+  });
+  */

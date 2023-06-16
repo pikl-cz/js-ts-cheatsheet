@@ -1,6 +1,6 @@
 // For use in bundle or module
 
-// TODO:
+// TODO: finish + unit test + npm publish
 
 type Module = {
   triggerSelector: string;

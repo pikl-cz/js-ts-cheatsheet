@@ -39,3 +39,34 @@ Promise.all(importStack).then(
   () => {}
 );
 */
+
+
+
+async function loadModules(): Promise<void> {
+  const modulesToLoad = [];
+
+  if (document.querySelector('.init-element-1')) {
+    modulesToLoad.push(import(/* webpackChunkName: "module1" */ './module1'));
+  }
+
+  if (document.querySelector('.init-element-2')) {
+    modulesToLoad.push(import(/* webpackChunkName: "module2" */ './module2'));
+  }
+
+  if (document.querySelector('.init-element-3')) {
+    modulesToLoad.push(import(/* webpackChunkName: "module3" */ './module3'));
+  }
+
+  try {
+    const loadedModules = await Promise.all(modulesToLoad);
+    // Use the loaded modules here
+    loadedModules.forEach((module) => {
+      module.doSomething();
+    });
+  } catch (error) {
+    // Handle error if any of the modules fail to load
+    console.error('Failed to load modules:', error);
+  }
+}
+
+loadModules();

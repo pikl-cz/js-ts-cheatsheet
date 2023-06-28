@@ -137,3 +137,30 @@ export const loadModules = async ({ modules, options }: LoadModulesProps) => {
     () => {}
   )
 }
+
+
+// Usage:
+
+
+// import { loadModules, initModule } from './loadModules';
+
+
+// export const modulesUI = {
+  // Seznam se skrývajícími se tématy
+  // accordion: {
+   //  trigger: { selector: '[data-accordion]', importSelf: true, many: true },
+  // },
+  // Univerzálního modálního okna
+  // modal: {
+  //   trigger: { selector: '[data-modal]', importSelf: true, many: true },
+  // },
+  
+// };
+
+
+// loadModules({
+//   modules: { ...modulesBase, ...modulesArticle, ...modulesFeatures, ...modulesUI },
+// });
+
+
+
